@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阅见山河｜跟着答题去旅行</title>
+<style>
+:root{--forest:#164d40;--leaf:#347b5e;--lime:#dcefcf;--cream:#fffaf0;--gold:#f4c75e;--coral:#ed8968;--ink:#183d34}
+*{box-sizing:border-box}body{margin:0;background:#edf4e8;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(#6e987b 1px,transparent 1px);background-size:20px 20px}
+header{height:72px;padding:0 max(5vw,20px);display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.logo{font-size:21px;font-weight:1000;letter-spacing:3px}.logo small{display:block;font-size:10px;letter-spacing:2px;color:#6b8777;margin-top:3px}
+.tag{background:white;border:1px solid #c9dfca;border-radius:30px;padding:9px 14px;font-size:12px;font-weight:800}
+main{max-width:1000px;margin:18px auto 60px;padding:0 18px}
+.hero{position:relative;overflow:hidden;border-radius:30px;padding:38px 42px;color:white;background:linear-gradient(110deg,#143e35ed,#27694fdd),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85') center/cover;box-shadow:0 10px 0 #cbdcc5}
+.hero:after{content:"";position:absolute;right:6%;bottom:-35px;width:280px;height:220px;background:linear-gradient(145deg,transparent 20%,#a9cba0 20% 35%,transparent 35%),linear-gradient(35deg,transparent 20%,#548363 20% 45%,transparent 45%);clip-path:polygon(0 100%,25% 25%,43% 70%,68% 0,100% 100%);opacity:.85}
+.kicker{display:inline-block;border:1px solid #ffffff66;background:#ffffff20;padding:7px 12px;border-radius:30px;font-size:11px;letter-spacing:2px}
+.hero h1{font-size:clamp(40px,7vw,66px);letter-spacing:9px;margin:18px 0 8px;text-shadow:3px 4px 0 #0b3029}
+.hero p{font-size:14px;line-height:1.9;color:#e2f1e5;max-width:510px;position:relative;z-index:1;margin-bottom:0}
+.hero .seal{position:absolute;right:10%;top:28px;font-size:76px;transform:rotate(12deg);opacity:.9;z-index:1}
+.panel{background:#fffdf7;border:2px solid #d7e5d1;border-radius:25px;padding:25px;margin-top:24px;box-shadow:0 7px 0 #cfdfc9}
+.intro{display:grid;grid-template-columns:1fr auto;align-items:center;gap:15px}.intro h2{margin:0 0 7px;font-size:22px}.intro p{margin:0;color:#71877a;font-size:13px;line-height:1.8}
+.ticket{font-size:58px;transform:rotate(8deg)}
+button{border:0;border-radius:14px;padding:14px 22px;background:var(--forest);color:white;font-weight:800;font-size:15px;cursor:pointer;transition:.18s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08)}button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.start{background:var(--gold);color:#40351e;box-shadow:0 4px 0 #d6a844;margin-top:17px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.pill{border-radius:30px;background:#eaf3e6;padding:8px 12px;font-size:12px;font-weight:800;color:#42705a}
+.progress{height:10px;background:#e9eee4;border-radius:20px;overflow:hidden;margin:18px 0}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,#58a477,#f4c75e);transition:.3s}
+.qtitle{font-size:12px;color:#759080;font-weight:800;letter-spacing:2px}
+.question{font-size:20px;font-weight:850;line-height:1.8;margin:13px 0 20px}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.option{background:white;color:var(--ink);border:2px solid #e1e9dc;text-align:left;font-weight:650;padding:16px;border-radius:15px;line-height:1.5}
+.option:hover{border-color:#7aaa88;background:#f5faf2}.option.selected{border-color:#347b5e;background:#eaf5e9}.option.correct{border-color:#3d9a68;background:#e9f7ed}.option.wrong{border-color:#df806b;background:#fff0eb}
+.feedback{margin-top:16px;padding:14px 16px;border-radius:14px;background:#f0f5e9;font-size:14px;line-height:1.8}
+.hidden{display:none!important}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.light{background:#eaf1e7;color:#315f4e}
+.result{text-align:center}.bigscore{font-size:68px;font-weight:1000;color:#27694f;margin:8px}.result p{color:#71877a;line-height:1.8}
+.medals{font-size:48px;letter-spacing:8px;margin:8px}
+footer{text-align:center;color:#829387;font-size:12px;padding:22px}
+@media(max-width:620px){.hero{padding:30px 24px}.hero .seal{right:8%;top:20px;font-size:52px}.options{grid-template-columns:1fr}.panel{padding:20px}.question{font-size:18px}.ticket{font-size:43px}}
+</style></head>
+<body>
+<header><div class="logo">阅见山河<small>TRAVEL CHINA · DISCOVER THE BEAUTY</small></div><div class="tag">跟着答题去旅行 ✈</div></header>
+<main>
+<section class="hero"><div class="kicker">中国国家旅游 · 山河探索计划</div><div class="seal">🧭</div><h1>阅见山河</h1><p>从一泓碧水到千年古城，从大漠丹霞到海上丝路。答一道题，解锁一处风景，开启一场纸上旅行！</p></section>
+<section id="welcome" class="panel">
+ <div class="intro"><div><h2>旅行家，准备出发了吗？</h2><p>完成一场中国风景知识挑战，看看你对祖国的大好河山了解多少！<br>共 14 道题 · 每题答对点亮一处目的地 · 答完揭晓你的旅行家称号。</p></div><div class="ticket">🎫</div></div>
+ <button class="start" id="start">开始山河挑战　→</button>
+</section>
+<section id="quiz" class="panel hidden">
+ <div class="row"><span class="pill" id="chapter">山河锦绣 · 自然风光</span><span class="pill" id="count">01 / 14</span></div>
+ <div class="progress"><span id="bar"></span></div><div class="qtitle" id="place">目的地 · 四川九寨沟</div><div class="question" id="question"></div>
+ <div class="options" id="options"></div><div class="feedback hidden" id="feedback"></div>
+ <div class="actions"><button id="submit" disabled>锁定答案</button><button class="light" id="exit">退出挑战</button></div>
+</section>
+<section id="result" class="panel hidden result">
+ <div class="medals" id="medal">🏅🌿🏞️</div><h2 id="headline">山河旅行家，恭喜通关！</h2><div class="bigscore" id="score">0 / 14</div><p id="summary"></p><div class="actions" style="justify-content:center"><button id="retry">再玩一次</button><button class="light" id="home">返回首页</button></div>
+</section>
+</main><footer>阅见山河 · 发现中国之美</footer>
+<script>
+const qs=[
+["山河锦绣·自然风光","四川·九寨沟","九寨沟以翠海、叠瀑、彩林、雪峰等自然景观闻名。景区内因湖水清澈、色彩斑斓而著称的高山湖泊，当地人称为______。",["天池","海子","泊湖","泉眼"],1,"九寨沟的湖泊被当地人称为“海子”，藏语中有“海”的意思。"],
+["山河锦绣·自然风光","广西·桂林山水","漓江沿岸山峰独特的地貌类型主要属于______。",["丹霞地貌","雅丹地貌","冰川地貌","喀斯特地貌"],3,"桂林山水以典型的喀斯特地貌著称，峰林、峰丛与漓江共同构成独特景观。"],
+["山河锦绣·自然风光","湖北·神农架","神农架国家级自然保护区的主要保护对象是______。",["亚热带森林生态系统及珍稀动植物","热带珊瑚礁生态系统","高原冰川生态系统","海洋湿地生态系统"],0,"神农架拥有丰富的森林资源和珍稀野生动植物，是重要的生态保护区域。"],
+["人文风物·古城记忆","云南·丽江古城","丽江古城内著名的四方街，历史上主要承担______功能。",["宗教祭祀","军事防御","商贸集市","皇家园林"],2,"四方街是丽江古城重要的商贸集市，也是古城街巷空间的中心。"],
+["民族风情·传统节庆","内蒙古·那达慕","传统那达慕大会中最具代表性的三项竞技活动是摔跤、赛马和______。",["射箭","踢毽子","龙舟竞渡","舞狮"],0,"摔跤、赛马、射箭合称那达慕传统的“男子三艺”。"],
+["海丝文化·开放之路","福建·泉州","宋元时期，泉州因海上贸易繁盛而被誉为“东方第一大港”。古代泉州港又有一个广为人知的名称，即______。",["刺桐港","明州港","广州港","登州港"],0,"刺桐是泉州的古称之一，泉州港也因此被称为刺桐港。"],
+["山河锦绣·自然风光","吉林·长白山","长白山天池形成的主要原因是______。",["冰川融水汇集","河流长期冲刷","火山喷发后形成的火山口积水","地壳断裂形成的湖盆"],2,"长白山天池是火山口湖，主要由火山喷发后形成的火山口积水而成。"],
+["人文风物·茶香中国","浙江·西湖龙井","西湖龙井是中国十大名茶之一。按照传统茶叶分类，它属于______。",["红茶","白茶","乌龙茶","绿茶"],3,"西湖龙井属于绿茶，以色绿、香郁、味甘、形美著称。"],
+["城市记忆·海滨风光","山东·青岛栈桥","青岛栈桥南端建有一座具有中国传统建筑风格的双层八角亭。这座亭子名为______。",["望海亭","迎宾阁","回澜阁","观潮亭"],2,"回澜阁位于青岛栈桥南端，是青岛著名的城市地标。"],
+["匠心中国·古建瑰宝","山西·应县木塔","应县木塔始建于辽代。它始建于______年。",["1056年","1066年","1076年","1086年"],0,"应县木塔始建于辽清宁二年，即公元1056年。"],
+["山河锦绣·自然风光","陕西·壶口瀑布","壶口瀑布横跨陕西与______两省。",["河南","山西","河北","甘肃"],1,"壶口瀑布位于陕西省宜川县与山西省吉县交界处。"],
+["山河锦绣·自然风光","新疆·喀纳斯","喀纳斯湖因湖水颜色随季节和天气变化而呈现不同色彩，民间还流传着关于湖中神秘生物的传说，这种传说中的生物通常被称为______。",["水怪","河神","雪怪","山灵"],0,"喀纳斯湖水怪是当地广为流传的民间传说，并非已被科学证实的生物。"],
+["山河锦绣·自然风光","甘肃·张掖丹霞","张掖七彩丹霞独特的色彩主要与岩层中不同的______有关。",["植物覆盖","矿物成分及沉积层颜色","火山熔岩流动","冰雪覆盖"],1,"不同矿物成分与沉积层颜色共同形成了张掖丹霞丰富的色彩纹理。"],
+["人文风物·皇家园林","河北·承德避暑山庄","承德避暑山庄与周围寺庙共同构成的世界文化遗产项目于______年列入《世界遗产名录》。",["1987年","1992年","1994年","2000年"],2,"“避暑山庄及其周围寺庙”于1994年列入《世界遗产名录》。"]
+];
+let i=0,chosen=null,locked=false,correct=0;
+const el=id=>document.getElementById(id);
+function screen(which){["welcome","quiz","result"].forEach(x=>el(x).classList.toggle("hidden",x!==which))}
+function start(){i=0;correct=0;screen("quiz");draw()}
+function draw(){let q=qs[i];chosen=null;locked=false;el("chapter").textContent=q[0];el("place").textContent="📍 目的地 · "+q[1];el("count").textContent=String(i+1).padStart(2,"0")+" / "+qs.length;el("bar").style.width=(i/qs.length*100)+"%";el("question").textContent=q[2];el("feedback").classList.add("hidden");el("submit").disabled=true;el("submit").textContent="锁定答案";el("options").innerHTML="";
+q[3].forEach((v,n)=>{let b=document.createElement("button");b.className="option";b.textContent=""+String.fromCharCode(65+n)+"　"+v;b.onclick=()=>{if(locked)return;chosen=n;document.querySelectorAll(".option").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");el("submit").disabled=false};el("options").appendChild(b)})}
+function submit(){if(!locked){if(chosen===null)return;locked=true;let q=qs[i],ok=chosen===q[4];if(ok)correct++;document.querySelectorAll(".option").forEach((b,n)=>{b.disabled=true;if(n===q[4])b.classList.add("correct");if(n===chosen&&!ok)b.classList.add("wrong")});el("feedback").innerHTML=(ok?"<b>答对啦！目的地解锁成功 ✨</b> ":"<b>差一点点！正确答案是 "+String.fromCharCode(65+q[4])+"。</b> ")+q[5];el("feedback").classList.remove("hidden");el("submit").textContent=i===qs.length-1?"查看旅行报告":"下一站 →";el("bar").style.width=((i+1)/qs.length*100)+"%"}else{i++;if(i<qs.length)draw();else finish()}}
+function finish(){screen("result");el("score").textContent=correct+" / "+qs.length;let pct=correct/qs.length;if(pct===1){el("headline").textContent="中国山河首席旅行家！";el("medal").textContent="🏆🌏✨"}else if(pct>=.7){el("headline").textContent="资深山河探索家！";el("medal").textContent="🥇🏞️🌿"}else if(pct>=.4){el("headline").textContent="潜力旅行家，继续出发！";el("medal").textContent="🎒🧭🌱"}else{el("headline").textContent="旅行新手，山河等你再发现！";el("medal").textContent="🚂🌄💚"}el("summary").textContent="你成功解锁 "+correct+" 处山河知识！"+(correct>=10?"你的中国地理知识储备相当丰富！":"把错题记下来，下次出发一定能发现更多中国之美！")}
+el("start").onclick=start;el("submit").onclick=submit;el("exit").onclick=()=>{if(confirm("确定退出本次挑战吗？"))screen("welcome")};el("retry").onclick=start;el("home").onclick=()=>screen("welcome");
+</script></body></html>
